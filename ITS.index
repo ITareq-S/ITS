@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITS — ITServices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html[data-theme="dark"]{
+    --bg:#111110;--ink:#F3F1EA;--soft:#9A9587;--gold:#E4BD5B;
+    --sh-dark:rgba(0,0,0,0.55);--sh-light:rgba(255,255,255,0.03);--surface:#131311;
+  }
+  html[data-theme="light"]{
+    --bg:#EDEBE3;--ink:#161512;--soft:#67635530;--soft:#67635a;--gold:#A9821F;
+    --sh-dark:rgba(0,0,0,0.18);--sh-light:rgba(255,255,255,0.9);--surface:#EDEBE3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:'Sora',sans-serif;line-height:1.65;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 32px;}
+
+  .neu{
+    background:var(--surface);border-radius:24px;
+    box-shadow: 10px 10px 24px var(--sh-dark), -10px -10px 24px var(--sh-light);
+  }
+  .neu-in{
+    background:var(--surface);border-radius:18px;
+    box-shadow: inset 6px 6px 14px var(--sh-dark), inset -6px -6px 14px var(--sh-light);
+  }
+
+  header{display:flex;justify-content:space-between;align-items:center;padding:30px 32px;max-width:980px;margin:0 auto;}
+  .logo{font-weight:800;font-size:1.15rem;}
+  .theme-toggle{width:44px;height:44px;border-radius:50%;border:none;color:var(--ink);cursor:pointer;font-size:1rem;background:var(--surface);box-shadow: 5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light);}
+
+  .hero{text-align:center;padding:50px 32px 70px;max-width:760px;margin:0 auto;}
+  .kicker{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:22px;}
+  h1{font-size:clamp(2.3rem,5vw,3.4rem);font-weight:800;letter-spacing:-0.02em;line-height:1.15;margin-bottom:22px;}
+  h1 .accent{color:var(--gold);}
+  .hero p{color:var(--soft);font-size:1.08rem;max-width:50ch;margin:0 auto 34px;}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;}
+  .btn-primary{background:var(--gold);color:#141310;padding:15px 28px;border-radius:16px;text-decoration:none;font-weight:700;font-size:0.95rem;box-shadow:6px 6px 14px var(--sh-dark);}
+  .btn-ghost{padding:15px 28px;border-radius:16px;text-decoration:none;font-weight:600;font-size:0.95rem;color:var(--ink);background:var(--surface);box-shadow: 5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light);}
+
+  section{padding:60px 32px;max-width:980px;margin:0 auto;}
+  .section-tag{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;text-align:center;}
+  h2{font-size:clamp(1.6rem,2.6vw,2.1rem);font-weight:800;text-align:center;margin-bottom:46px;}
+
+  .status-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px;margin-bottom:20px;}
+  .status-strip .cell{text-align:center;padding:16px;}
+  .status-strip .n{font-size:1.4rem;font-weight:800;color:var(--gold);font-family:'IBM Plex Mono',monospace;}
+  .status-strip .l{font-size:0.78rem;color:var(--soft);margin-top:6px;}
+
+  .timeline{position:relative;padding-left:6px;}
+  .t-item{display:grid;grid-template-columns:52px 1fr;gap:20px;padding-bottom:36px;position:relative;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:"";position:absolute;left:25px;top:52px;bottom:0;width:2px;background:linear-gradient(var(--gold), transparent);opacity:0.3;}
+  .t-item:last-child::before{display:none;}
+  .t-dot{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--gold);}
+  .t-item h3{font-size:1.05rem;margin-bottom:6px;font-weight:700;}
+  .t-item p{color:var(--soft);font-size:0.92rem;}
+
+  .cert-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:6px;}
+  .cert-cell{padding:26px;}
+  .cert-cell .name{font-weight:700;font-size:1.05rem;margin-bottom:6px;}
+  .cert-cell .meta{color:var(--soft);font-size:0.82rem;font-family:'IBM Plex Mono',monospace;}
+
+  .service-pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:8px;}
+  .pill{padding:16px 22px;border-radius:16px;font-size:0.88rem;font-weight:600;}
+
+  .cta-final{text-align:center;padding:56px 40px;}
+  .cta-final h2{margin-bottom:14px;}
+  .cta-final p{color:var(--soft);margin-bottom:26px;}
+
+  footer{text-align:center;padding:36px 32px;color:var(--soft);font-size:0.85rem;}
+
+  @media (max-width:760px){
+    .status-strip{grid-template-columns:repeat(2,1fr);}
+    .cert-pair{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ITS</div>
+  <button class="theme-toggle" id="themeToggle">◐</button>
+</header>
+
+<div class="hero">
+  <div class="kicker">Computer &amp; Network Engineering</div>
+  <h1>Calm, careful IT work — <span class="accent">no drama, no worries.</span></h1>
+  <p>I'm Tareq BinSebaa, CCNA and SCE Engineering certified. I take on a small number of projects at a time so each one gets it done right.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#contact">Get in touch</a>
+    <a class="btn-ghost" href="#services">See services</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="neu status-strip">
+    <div class="cell"><div class="n">&lt;24h</div><div class="l">Response time</div></div>
+    <div class="cell"><div class="n">1:1</div><div class="l">Direct access</div></div>
+    <div class="cell"><div class="n">Agreed Price</div><div class="l">Consultation</div></div>
+    <div class="cell"><div class="n">2</div><div class="l">Certifications</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-tag">Services</div>
+  <h2>What I take on</h2>
+  <div class="wrap neu service-pills" style="padding:24px 20px;">
+    <span class="pill neu-in">Network Setup</span>
+    <span class="pill neu-in">System Administration</span>
+    <span class="pill neu-in">Security Hardening</span>
+    <span class="pill neu-in">Cloud &amp; Backup</span>
+    <span class="pill neu-in">Hardware Support</span>
+    <span class="pill neu-in">Consulting</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Process</div>
+  <h2>How a project runs</h2>
+  <div class="timeline">
+    <div class="t-item"><div class="t-dot neu">01</div><div><h3>You reach out</h3><p>Tell me what's going on — message or call, whatever's easier.</p></div></div>
+    <div class="t-item"><div class="t-dot neu">02</div><div><h3>Paid assessment</h3><p>A flat-rate visit or remote session to look at the setup and figure out what's needed.</p></div></div>
+    <div class="t-item"><div class="t-dot neu">03</div><div><h3>Clear quote</h3><p>You get a fixed price before anything starts — no surprises later.</p></div></div>
+    <div class="t-item"><div class="t-dot neu">04</div><div><h3>It gets fixed</h3><p>Work gets done, documented, and I stay reachable after.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">Credentials</div>
+  <h2>Certified &amp; current</h2>
+  <div class="wrap cert-pair neu">
+    <div class="cert-cell neu-in"><div class="name">CCNA</div><div class="meta">Cisco Certified Network Associate · Cisco</div></div>
+    <div class="cert-cell neu-in"><div class="name">Engineering Certification</div><div class="meta">Saudi Council of Engineers </div></div>
+  </div>
+</section>
+
+<div class="wrap neu cta-final" id="contact">
+  <h2>Something not working right?</h2>
+  <p>Send a message — I'll get back to you within a day.</p>
+  <a class="btn-primary" href="mailto:itareq.sebaa@gmail.com">itareq.sebaa@gmail.com</a>
+</div>
+
+<footer>&copy; <span id="year"></span> ITS — Tareq BinSebaa, Computer &amp; Network Engineer</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var html = document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>
