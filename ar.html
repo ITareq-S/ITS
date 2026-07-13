@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITS — ITServices </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html[data-theme="dark"]{
+    --bg:#111110;--ink:#F3F1EA;--soft:#9A9587;--gold:#E4BD5B;
+    --sh-dark:rgba(0,0,0,0.55);--sh-light:rgba(255,255,255,0.03);--surface:#131311;
+  }
+  html[data-theme="light"]{
+    --bg:#EDEBE3;--ink:#161512;--soft:#67635a;--gold:#A9821F;
+    --sh-dark:rgba(0,0,0,0.18);--sh-light:rgba(255,255,255,0.9);--surface:#EDEBE3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:'Tajawal',sans-serif;line-height:1.8;}
+  .ltr-num{font-family:'IBM Plex Mono',monospace;direction:ltr;unicode-bidi:embed;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 32px;}
+
+  .neu{background:var(--surface);border-radius:24px;box-shadow:10px 10px 24px var(--sh-dark), -10px -10px 24px var(--sh-light);}
+  .neu-in{background:var(--surface);border-radius:18px;box-shadow:inset 6px 6px 14px var(--sh-dark), inset -6px -6px 14px var(--sh-light);}
+
+  header{display:flex;justify-content:space-between;align-items:center;padding:30px 32px;max-width:980px;margin:0 auto;}
+  .logo{font-weight:800;font-size:1.15rem;}
+  .header-actions{display:flex;align-items:center;gap:10px;}
+  .icon-btn{width:44px;height:44px;border-radius:50%;background:var(--surface);box-shadow:5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light);display:flex;align-items:center;justify-content:center;color:var(--ink);text-decoration:none;border:none;cursor:pointer;font-size:1rem;}
+
+  .hero{text-align:center;padding:50px 32px 70px;max-width:760px;margin:0 auto;}
+  .kicker{font-size:0.85rem;color:var(--gold);letter-spacing:0.03em;margin-bottom:22px;font-weight:700;}
+  h1{font-size:clamp(2.1rem,5vw,3.1rem);font-weight:800;line-height:1.35;margin-bottom:22px;}
+  h1 .accent{color:var(--gold);}
+  .hero p{color:var(--soft);font-size:1.08rem;max-width:52ch;margin:0 auto 34px;}
+  .hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--gold);color:#141310;padding:15px 28px;border-radius:16px;text-decoration:none;font-weight:700;font-size:0.95rem;box-shadow:6px 6px 14px var(--sh-dark);display:inline-block;}
+  .btn-ghost{padding:15px 28px;border-radius:16px;text-decoration:none;font-weight:700;font-size:0.95rem;color:var(--ink);background:var(--surface);box-shadow:5px 5px 12px var(--sh-dark), -5px -5px 12px var(--sh-light);display:inline-block;}
+
+  section{padding:60px 32px;max-width:980px;margin:0 auto;}
+  .section-tag{color:var(--gold);font-size:0.82rem;font-weight:700;text-align:center;margin-bottom:16px;}
+  h2{font-size:clamp(1.6rem,2.6vw,2.1rem);font-weight:800;text-align:center;margin-bottom:46px;}
+
+  .status-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:30px;margin-bottom:20px;}
+  .status-strip .cell{text-align:center;padding:16px;}
+  .status-strip .n{font-size:1.3rem;font-weight:800;color:var(--gold);}
+  .status-strip .l{font-size:0.8rem;color:var(--soft);margin-top:6px;}
+
+  .timeline{position:relative;padding-right:6px;}
+  .t-item{display:grid;grid-template-columns:52px 1fr;gap:20px;padding-bottom:36px;position:relative;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{content:"";position:absolute;right:25px;top:52px;bottom:0;width:2px;background:linear-gradient(var(--gold), transparent);opacity:0.3;}
+  .t-item:last-child::before{display:none;}
+  .t-dot{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--gold);}
+  .t-item h3{font-size:1.05rem;margin-bottom:6px;font-weight:700;}
+  .t-item p{color:var(--soft);font-size:0.94rem;}
+
+  .cert-pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:6px;}
+  .cert-cell{padding:26px;}
+  .cert-cell .name{font-weight:700;font-size:1.05rem;margin-bottom:6px;}
+  .cert-cell .meta{color:var(--soft);font-size:0.85rem;}
+
+  .service-pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:8px;}
+  .pill{padding:16px 22px;border-radius:16px;font-size:0.9rem;font-weight:700;}
+
+  .cta-final{text-align:center;padding:56px 40px;}
+  .cta-final h2{margin-bottom:14px;}
+  .cta-final p{color:var(--soft);margin-bottom:26px;}
+
+  footer{text-align:center;padding:36px 32px;color:var(--soft);font-size:0.85rem;}
+
+  .lang-switch{font-size:0.8rem;color:var(--soft);text-decoration:none;border:1px solid var(--sh-dark);padding:8px 14px;border-radius:10px;}
+
+  @media (max-width:760px){
+    .status-strip{grid-template-columns:repeat(2,1fr);}
+    .cert-pair{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ITS</div>
+  <div class="header-actions">
+    <a class="lang-switch" href="index.html">English</a>
+    <a class="icon-btn" href="https://www.linkedin.com/in/tareq-sebaa-583197355/" target="_blank" rel="noopener" aria-label="لينكدإن">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+    </a>
+    <button class="icon-btn" id="themeToggle">◐</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="kicker">هندسة الحاسب والشبكات</div>
+  <h1>عمل تقني هادئ ودقيق — <span class="accent">بدون فوضى، بدون قلق.</span></h1>
+  <p>أنا طارق بن سباع، حاصل على شهادة CCNA وشهادة اعتماد مهندس من هيئة المهندسين السعودية. أتولى عددًا محدودًا من المشاريع في كل مرة لضمان إنجاز كل مشروع على أكمل وجه.</p>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="#contact">تواصل معي</a>
+    <a class="btn-ghost" href="#services">الخدمات</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="neu status-strip">
+    <div class="cell"><div class="n ltr-num">&lt;24h</div><div class="l">زمن الاستجابة</div></div>
+    <div class="cell"><div class="n ltr-num">1:1</div><div class="l">تواصل مباشر</div></div>
+    <div class="cell"><div class="n">بالاتفاق</div><div class="l">الاستشارة</div></div>
+    <div class="cell"><div class="n ltr-num">2</div><div class="l">الشهادات</div></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-tag">الخدمات</div>
+  <h2>ما أقوم به</h2>
+  <div class="wrap neu service-pills" style="padding:24px 20px;">
+    <span class="pill neu-in">تركيب الشبكات</span>
+    <span class="pill neu-in">إدارة الأنظمة</span>
+    <span class="pill neu-in">تعزيز الأمان</span>
+    <span class="pill neu-in">النسخ الاحتياطي السحابي</span>
+    <span class="pill neu-in">دعم الأجهزة</span>
+    <span class="pill neu-in">استشارات تقنية</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">آلية العمل</div>
+  <h2>كيف يسير المشروع</h2>
+  <div class="timeline">
+    <div class="t-item"><div class="t-dot neu ltr-num">01</div><div><h3>تتواصل معي</h3><p>أخبرني بما تحتاجه — عبر رسالة أو مكالمة، أيهما أنسب لك.</p></div></div>
+    <div class="t-item"><div class="t-dot neu ltr-num">02</div><div><h3>تقييم مبدئي مدفوع</h3><p>زيارة أو جلسة عن بُعد بسعر ثابت لفحص الوضع وتحديد ما هو مطلوب.</p></div></div>
+    <div class="t-item"><div class="t-dot neu ltr-num">03</div><div><h3>عرض سعر واضح</h3><p>تحصل على سعر ثابت قبل البدء بأي عمل — بدون مفاجآت لاحقًا.</p></div></div>
+    <div class="t-item"><div class="t-dot neu ltr-num">04</div><div><h3>يتم الإصلاح</h3><p>يُنجز العمل ويُوثّق، وأبقى متاحًا للتواصل بعد ذلك.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-tag">الشهادات</div>
+  <h2>معتمد ومواكب لأحدث المعايير</h2>
+  <div class="wrap cert-pair neu">
+    <div class="cert-cell neu-in"><div class="name">CCNA</div><div class="meta">شهادة سيسكو لمهندسي الشبكات المعتمدين · Cisco</div></div>
+    <div class="cert-cell neu-in"><div class="name">شهادة اعتماد مهندس</div><div class="meta">هيئة المهندسين السعودية</div></div>
+  </div>
+</section>
+
+<div class="wrap neu cta-final" id="contact">
+  <h2>هل يوجد شيء لا يعمل بشكل صحيح؟</h2>
+  <p>أرسل رسالة، وسأرد عليك خلال يوم واحد.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn-primary" href="mailto:itareq.sebaa@gmail.com">itareq.sebaa@gmail.com</a>
+    <a class="btn-ghost" href="https://www.linkedin.com/in/tareq-sebaa-583197355/" target="_blank" rel="noopener">تواصل عبر لينكدإن</a>
+  </div>
+</div>
+
+<footer>
+  &copy; <span id="year"></span> ITS — طارق بن سباع، مهندس حاسب وشبكات
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  var html = document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click', function(){
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>
